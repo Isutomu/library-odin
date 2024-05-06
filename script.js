@@ -30,12 +30,49 @@ function addBookToTable(book) {
     const tableRow = document.createElement('tr');
 
     for (field of bookInfoFields) {
+        if (field === 'bookRead') {
+            continue;
+        }
         const tableData = document.createElement('td');
 
         tableData.textContent = book[field.replace('book', '').toLowerCase()];
         tableData.classList.add(field);
         tableRow.appendChild(tableData);
     }
+
+    const tableData = document.createElement('td');
+    tableData.classList.add('bookRead');
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    if (book.read === 'on') {
+        checkbox.setAttribute('checked', 'true');
+    }
+    checkbox.addEventListener('change', (e) => {
+        const bookRead = e.target;
+        const bookRow = bookRead.closest('tr');
+        const bookTitle = bookRow.querySelector('.bookTitle').textContent;
+        if (bookRead.getAttribute('checked') === 'true') {
+            bookRead.setAttribute('checked', 'false');
+            myLibrary.map((book) => {
+                if (bookTitle === book.title) {
+                    book.read = 'off';
+                }
+                return book;
+            })
+        } else {
+            bookRead.setAttribute('checked', 'true');
+            myLibrary.map((book) => {
+                if (bookTitle === book.title) {
+                    book.read = 'on';
+                }
+                return book;
+            })
+        }
+    })
+
+    tableData.appendChild(checkbox);
+    tableRow.appendChild(tableData);
+
     bookTable.appendChild(tableRow);
 }
 
