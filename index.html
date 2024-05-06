@@ -5,39 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
-  <script href="script.js"></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <form action="">
-    <div>
-      <label for="bookTitle">Title</label>
-      <input type="text" id="bookTitle" name="bookTitle">
-    </div>
-    <div>
-      <label for="bookAuthor">Author</label>
-      <input type="text" id="bookAuthor" name="bookAuthor">
-    </div>
-    <div>
-      <label for="bookPages">Pages</label>
-      <input type="text" id="bookPages" name="bookPages">
-    </div>
-    <div>
-      <label for="bookRead">Read</label>
-      <input type="text" id="bookRead" name="bookRead">
-    </div>
-    <button type="submit">Add book</button>
-  </form>
-  <table class="bookTable">
-    <caption>Books in the library</caption>
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Author</th>
-        <th scope="col">Pages</th>
-        <th scope="col">Read</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <main>
+    <form action="">
+      <div>
+        <label for="bookTitle">Title</label>
+        <input type="text" id="bookTitle" name="bookTitle">
+      </div>
+      <div>
+        <label for="bookAuthor">Author</label>
+        <input type="text" id="bookAuthor" name="bookAuthor">
+      </div>
+      <div>
+        <label for="bookPages">Pages</label>
+        <input type="text" id="bookPages" name="bookPages">
+      </div>
+      <div>
+        <label for="bookRead">Read</label>
+        <input type="text" id="bookRead" name="bookRead">
+      </div>
+      <button type="submit">Add book</button>
+    </form>
+    <table class="bookTable">
+      <caption>Books in the library</caption>
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Read</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
 </body>
 </html>

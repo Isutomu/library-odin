@@ -1,5 +1,6 @@
-const bookForm = document.querySelector('.bookForm');
+const bookForm = document.querySelector('form');
 const myLibrary = [];
+// 'book' + capitalized property of Book constructor
 const bookInfoFields = ['bookTitle', 'bookAuthor', 'bookPages', 'bookRead'];
 
 function Book(title, author, pages, read) {
@@ -19,41 +20,38 @@ function addBookToLibrary(bookInfo) {
 }
 
 function displayBooks() {
-    const bookTable = document.querySelector('.bookTable');
-    const booksTitle = document.querySelectorAll('.bookTitle');
-    const tableRow = document.createElement('tr');
-    const tableData = document.createElement('td');
-
-    for (book in myLibrary) {
-
-        if (booksTitle) {
-            if (booksTitle.map(el => el.value).reduce(
-                (exist, bookTitle) => {
-                    return exist || (bookTitle === book.title)
-                }, false)
-            ) {
-                continue;
-            }
-        }
-
-        for (field in bookInfoFields) {
-            tableData.value = book[field];
-            tableData.classList.add(field);
-            tableRow.appendChild(tableData);
-        }
-        bookTable.appendChild(tableRow);
+    for (book of myLibrary) {
+        addBookToTable(book);
     }
+}
+
+function addBookToTable(book) {
+    const bookTable = document.querySelector('tbody');
+    const tableRow = document.createElement('tr');
+
+    for (field of bookInfoFields) {
+        const tableData = document.createElement('td');
+
+        tableData.textContent = book[field.replace('book', '').toLowerCase()];
+        tableData.classList.add(field);
+        tableRow.appendChild(tableData);
+    }
+    bookTable.appendChild(tableRow);
 }
 
 bookForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const bookInfo = [];
-    for (field in bookInfoFields) {
-        bookInfo.push(document.querySelector(`#${field}`).value)
+    const newBookTitle = document.querySelector('#bookTitle').value;
+    isBookInLibrary = myLibrary.reduce((exist, book) => (exist || book.title === newBookTitle), false);
+    if (isBookInLibrary) {
+        return;
     }
 
+    const bookInfo = [];
+    for (field of bookInfoFields) {
+        bookInfo.push(document.querySelector(`#${field}`).value);
+    }
     addBookToLibrary(bookInfo);
-
-    displayBooks();
+    addBookToTable(myLibrary.slice(-1)[0]);
 });
