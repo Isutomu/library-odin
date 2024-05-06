@@ -28,6 +28,23 @@ function displayBooks() {
 function addBookToTable(book) {
     const bookTable = document.querySelector('tbody');
     const tableRow = document.createElement('tr');
+    tableRow.setAttribute('position', 'relative');
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-row');
+    deleteButton.setAttribute('position', 'absolute');
+    deleteButton.addEventListener('click', (e) => {
+        const bookTable = document.querySelector('tbody');
+        const tableRow = e.target.closest('tr');
+        const bookTitle = tableRow.querySelector('.bookTitle').textContent;
+        const libraryFiltered = myLibrary.filter((book) => book.title !== bookTitle);
+        myLibrary.length = 0;
+        for (book of libraryFiltered) {
+            myLibrary.push(book);
+        }
+        tableRow.remove();
+    });
+    tableRow.appendChild(deleteButton);
 
     for (field of bookInfoFields) {
         if (field === 'bookRead') {

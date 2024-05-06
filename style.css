@@ -64,3 +64,8 @@ table {
 
   border: 1px solid black;
 }
+
+.delete-row {
+  width: 8px;
+  height: 8px;
+}
