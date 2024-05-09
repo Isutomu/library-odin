@@ -3,13 +3,15 @@ const myLibrary = [];
 // 'book' + capitalized property of Book constructor
 const bookInfoFields = ['bookTitle', 'bookAuthor', 'bookPages', 'bookRead'];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-
-    this.info = () => {
+class Book {
+    constructor (title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+    
+    info() {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`
     }
 }
