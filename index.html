@@ -1,45 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <main>
-    <form action="">
-      <div>
-        <label for="bookTitle">Title</label>
-        <input type="text" id="bookTitle" name="bookTitle">
-      </div>
-      <div>
-        <label for="bookAuthor">Author</label>
-        <input type="text" id="bookAuthor" name="bookAuthor">
-      </div>
-      <div>
-        <label for="bookPages">Pages</label>
-        <input type="text" id="bookPages" name="bookPages">
-      </div>
-      <div>
-        <input type="checkbox" id="bookRead" name="bookRead">
-        <label for="bookRead">Read</label>
-      </div>
-      <button type="submit">Add book</button>
-    </form>
-    <table class="bookTable">
-      <caption>Books in the library</caption>
-      <thead>
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Pages</th>
-          <th scope="col">Read</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="form-validation.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <form action="">
+        <div>
+          <label for="bookTitle">Title</label>
+          <input
+            type="text"
+            id="bookTitle"
+            name="bookTitle"
+            maxlength="60"
+            required
+          />
+        </div>
+        <div>
+          <label for="bookAuthor">Author</label>
+          <input
+            type="text"
+            id="bookAuthor"
+            name="bookAuthor"
+            maxlength="60"
+            required
+          />
+        </div>
+        <div>
+          <label for="bookPages">Pages</label>
+          <input
+            type="number"
+            id="bookPages"
+            name="bookPages"
+            min="1"
+            max="9999"
+            required
+          />
+        </div>
+        <div>
+          <input type="checkbox" id="bookRead" name="bookRead" />
+          <label for="bookRead">Read</label>
+        </div>
+        <button type="submit" id="submit-btn">Add book</button>
+      </form>
+      <table class="bookTable">
+        <caption>
+          Books in the library
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Pages</th>
+            <th scope="col">Read</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+  </body>
 </html>
